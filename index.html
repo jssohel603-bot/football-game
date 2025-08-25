@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>লুডু লাইট (২ প্লেয়ার)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🎲 লুডু লাইট – ২ প্লেয়ার</h1>
+
+  <div class="ui">
+    <div class="panel">
+      <div><strong>টার্ন:</strong> <span id="turnText">লাল</span></div>
+      <button id="rollBtn">🎲 Dice রোল করুন</button>
+      <div class="dice">ডাইস: <span id="diceValue">-</span></div>
+      <div id="msg" class="msg"></div>
+    </div>
+  </div>
+
+  <canvas id="board" width="420" height="420"></canvas>
+
+  <footer>নিয়ম: ৬ পেলে বের হবে, ৬ পেলে আবার টার্ন, প্রতিপক্ষকে কাটলে সে হোমে যাবে, এক ল্যাপ সম্পূর্ণ করলে জয়।</footer>
+
+  <script src="ludo.js"></script>
+</body>
+</html>

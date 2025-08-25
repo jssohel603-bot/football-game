@@ -1,9 +1,0 @@
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;background:#0b6623;font-family:system-ui,Arial,sans-serif;color:#fff}
-.hud{
-  max-width:980px;margin:10px auto;display:flex;gap:12px;justify-content:space-between;
-  align-items:center;padding:0 10px;font-size:14px;flex-wrap:wrap
-}
-.kbd{border:1px solid #fff;padding:1px 6px;border-radius:4px;margin:0 4px}
-.score{background:#1b5e20;padding:6px 10px;border-radius:8px;font-weight:700}
-canvas#game{display:block;margin:0 auto;border:2px solid #fff;background:#2e7d32}

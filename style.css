@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  background: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+canvas {
+  background: #0b6623; /* মাঠের রঙ */
+  border: 2px solid white;
+}

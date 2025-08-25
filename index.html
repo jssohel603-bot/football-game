@@ -1,106 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <title>Football Game</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: green;
-    }
-    canvas {
-      display: block;
-      margin: auto;
-      background: darkgreen;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DLS-Style Mini Football (11v11)</title>
+  <link rel="stylesheet" href="game.css" />
 </head>
 <body>
-  <canvas id="gameCanvas" width="800" height="500"></canvas>
+  <div class="hud">
+    <div class="controls">
+      Controls:
+      <span class="kbd">← ↑ → ↓</span> মুভ •
+      <span class="kbd">E</span> বলের নিকটতম প্লেয়ার •
+      <span class="kbd">A</span> পাস •
+      <span class="kbd">Space</span> শুট •
+      <span class="kbd">R</span> রিসেট
+    </div>
+    <div class="score" id="score">Blue 0 - 0 Red</div>
+  </div>
 
-  <script>
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
+  <canvas id="game" width="960" height="540"></canvas>
 
-    const playerSize = 20;
-    const ballSize = 10;
-
-    // বল
-    const ball = { x: canvas.width/2, y: canvas.height/2 };
-
-    // দুই টিমের প্লেয়ার (11 করে ধরলাম)
-    const teamA = [];
-    const teamB = [];
-
-    for (let i=0; i<11; i++) {
-      teamA.push({ x: 100, y: 40 + i*40, color: "blue" });
-      teamB.push({ x: 700, y: 40 + i*40, color: "red" });
-    }
-
-    // গোলকিপার
-    const keeperA = { x: 50, y: canvas.height/2, color: "yellow" };
-    const keeperB = { x: 750, y: canvas.height/2, color: "yellow" };
-
-    // কীবোর্ড কন্ট্রোল – শুধু টিম A এর জন্য
-    const keys = {};
-    window.addEventListener("keydown", e => keys[e.key] = true);
-    window.addEventListener("keyup", e => keys[e.key] = false);
-
-    function movePlayers() {
-      // Arrow keys দিয়ে ১ম প্লেয়ার নড়বে
-      const p = teamA[0];
-      if (keys["ArrowUp"]) p.y -= 3;
-      if (keys["ArrowDown"]) p.y += 3;
-      if (keys["ArrowLeft"]) p.x -= 3;
-      if (keys["ArrowRight"]) p.x += 3;
-    }
-
-    function drawField() {
-      ctx.fillStyle = "darkgreen";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.strokeStyle = "white";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(50, 50, canvas.width-100, canvas.height-100);
-
-      // Mid line
-      ctx.beginPath();
-      ctx.moveTo(canvas.width/2, 50);
-      ctx.lineTo(canvas.width/2, canvas.height-50);
-      ctx.stroke();
-
-      // Center circle
-      ctx.beginPath();
-      ctx.arc(canvas.width/2, canvas.height/2, 50, 0, Math.PI*2);
-      ctx.stroke();
-    }
-
-    function drawPlayers() {
-      [...teamA, ...teamB, keeperA, keeperB].forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, playerSize/2, 0, Math.PI*2);
-        ctx.fillStyle = p.color;
-        ctx.fill();
-      });
-    }
-
-    function drawBall() {
-      ctx.beginPath();
-      ctx.arc(ball.x, ball.y, ballSize, 0, Math.PI*2);
-      ctx.fillStyle = "white";
-      ctx.fill();
-    }
-
-    function gameLoop() {
-      movePlayers();
-      drawField();
-      drawPlayers();
-      drawBall();
-      requestAnimationFrame(gameLoop);
-    }
-
-    gameLoop();
-  </script>
+  <script src="game.js"></script>
 </body>
 </html>
